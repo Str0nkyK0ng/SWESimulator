@@ -61,12 +61,12 @@ public class Board{
 
 
     public string getDisplay(){
-        string display = "";
+        string display = "<mspace=0.01>";
         for(int i=0;i<rows;i++){
             for(int j=0;j<cols;j++){
                 Entity e = get(i,j);
                 if(e==null)
-                    display+=' ';
+                    display+='.';
                 else
                     display+=e.displayChar;
             }

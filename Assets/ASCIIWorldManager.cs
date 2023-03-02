@@ -20,7 +20,7 @@ public class ASCIIWorldManager{
         return board.getDisplay();
     }
     public ASCIIWorldManager(){
-        board = new Board(19,11,this);
+        board = new Board(30,11,this);
         player = new Player(this);
         playerLocation= new Vector2(5,5);
         board.set(playerLocation,player);

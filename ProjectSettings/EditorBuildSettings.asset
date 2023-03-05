@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/RoundTwo.unity
+    guid: 05a37730cf0054464a644fa9c0b2fd4b
+  - enabled: 1
+    path: Assets/Scenes/ProfileAnimations.unity
+    guid: 548119871d33687418c7a626c1b45422
+  - enabled: 1
     path: Assets/Scenes/TextBasedWorld.unity
     guid: d454958c748a226428d7534e01e474e5
   - enabled: 1

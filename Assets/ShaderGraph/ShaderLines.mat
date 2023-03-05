@@ -42,7 +42,8 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _LinesAmount: 0.0215
+    - _LinesAmount: 0.0224
+    - _NoiseAmount: 0.187
     - _QueueControl: 0
     - _QueueOffset: -50
     - _ScanSpeed: 1.25

@@ -39,6 +39,29 @@ public class Cake:Entity{
     }
 }
 
+public class Desk : Entity
+{
+    int checkNumber;
+    string[] responses = new string[] {
+        "I guess this is my desk. I'll come back here when I'm ready to work.",
+    };
+
+    public Desk(ASCIIWorldManager w) : base(w)
+    {
+        displayChar = "<#945D01>D</color>";
+        checkNumber = -1;
+    }
+    public override bool interact()
+    {
+        checkNumber++;
+        if (checkNumber < 1)
+            world.setLabel(responses[checkNumber]);
+        else
+            Debug.Log("Transition to final scene");
+        return true;
+    }
+}
+
 public class Player:Entity{
     public Player(ASCIIWorldManager w):base(w){
         displayChar="<#2D7DD2>@</color>";

@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!1045 &1
-EditorBuildSettings:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/RoundTwo.unity
-    guid: 05a37730cf0054464a644fa9c0b2fd4b
-  - enabled: 1
-    path: Assets/Scenes/ProfileAnimations.unity
-    guid: 548119871d33687418c7a626c1b45422
-  - enabled: 1
-    path: Assets/Scenes/TextBasedWorld.unity
-    guid: d454958c748a226428d7534e01e474e5
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  m_configObjects: {}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5fe1c00ef2279a4321e6c067846a2265777f7bf6c8b237d3eef9f36dd88af072
+size 660

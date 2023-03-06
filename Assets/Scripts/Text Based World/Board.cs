@@ -17,10 +17,11 @@ public class Board{
         for(int i=0;i<rows;i++){
             entityGrid[i] = new Entity[cols];
             for(int j=0;j<cols;j++){
-                Wall newWall = new Wall(world);
 
-                if(i==0 || j==0 || i==rows-1 || j == cols-1)
-                    entityGrid[i][j] = newWall;
+                //Default to making a wall everywhere
+                Wall newWall = new Wall(world);
+                entityGrid[i][j] = newWall;
+
 
             }
         }
@@ -37,6 +38,17 @@ public class Board{
             entityGrid[(int)pos.y][(int)pos.x] = e;
     }
 
+    public void clearBox(Vector2 topLeft, Vector2 bottomRight)
+    {
+        for(int r = (int)topLeft.y; r < (int)bottomRight.y; r++)
+        {
+            for (int c = (int)topLeft.x; c < (int)bottomRight.x; c++)
+            {
+                entityGrid[r][c] = null;
+            }
+
+        }
+    }
     
     public Entity get(int r, int c){
         return entityGrid[r][c];

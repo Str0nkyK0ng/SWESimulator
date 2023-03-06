@@ -20,11 +20,33 @@ public class ASCIIWorldManager{
         return board.getDisplay();
     }
     public ASCIIWorldManager(){
-        board = new Board(30,11,this);
+
+
+
+        board = new Board(30,10,this);
         player = new Player(this);
-        playerLocation= new Vector2(5,5);
+
+        //The player starts in the left center
+        playerLocation = new Vector2(0,5);
+
+
+        //Make a hallway (clear out the center 3 rows)
+        for(int c = 0; c < 30; c++)
+        {
+            board.set(6, c, null);
+            board.set(5, c, null);
+            board.set(4, c, null);
+        }
+
+
+
+
         board.set(playerLocation,player);
         board.set(5,6,new Cake(this));
+        board.set(9, 9, new Desk(this));
+
+
+
     }
 
     public bool MovePlayer(Vector2 dir){

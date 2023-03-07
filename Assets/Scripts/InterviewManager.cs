@@ -110,7 +110,7 @@ public class InterviewManager : MonoBehaviour
         }
         else
         {
-            Application.Quit();
+            LoadingManager.instance.LoadScene(1);
         }
 
     }

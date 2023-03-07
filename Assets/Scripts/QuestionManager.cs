@@ -11,12 +11,16 @@ public class QuestionManager : MonoBehaviour
     public Question activeQuestion;
     public Question[] questionList;
     public int questionIndex=0;
-    public TextMeshProUGUI interviewHeader,questionStatement, questionDetails;
+    public TextMeshProUGUI questionStatement, questionDetails;
 
 
     void DisplayQuestion(){
         questionStatement.text=activeQuestion.questionStatement;
         questionDetails.text=activeQuestion.questionDetails;
+    }
+    void HideDisplay(){
+        questionStatement.text="";
+        questionDetails.text="";
     }
     public void AttemptAnswer(string ans){
         //Remove any spaces or ,s
@@ -41,7 +45,9 @@ public class QuestionManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(1);
+            HeaderManager.hideHeader();
+            HideDisplay();
+            LoadingManager.instance.LoadScene(2);
         }
     }
     void WrongAnswer(){
@@ -61,17 +67,22 @@ public class QuestionManager : MonoBehaviour
         ans = "123456789101112131415";
         Question secondQuestion = new Question(q,details,ans);
 
+        details ="3, 7, 13, 6, 11, 10, 14, 2, 12, 9, 1, 8, 5, 15, 4";
+        q = "Now, do it again for these numbers";
+        ans = "123456789101112131415";
+        Question thirdQuestion = new Question(q,details,ans);
+
         details ="Uncovering hidden data that users hide.";
         q = "The following is our company statement.\nPlease replace any 'a' characters with '@' symbols.";
         ans = "uncoveringhiddend@t@th@tusershide";
-        Question thirdQuestion = new Question(q,details,ans);
+        Question fourthQuestion = new Question(q,details,ans);
 
         details = "@@@@@@@@a@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
         q = "Starting from 0, what is the index of the ‘a’ character in the following text?";
         ans = "8";
-        Question fourthQuestion = new Question(q, details, ans);
+        Question fifthQuestion = new Question(q, details, ans);
 
-        questionList = new Question[4]{firstQuestion,secondQuestion,thirdQuestion,fourthQuestion};
+        questionList = new Question[5]{firstQuestion,secondQuestion,thirdQuestion,fourthQuestion,fifthQuestion};
         questionIndex=0;
         activeQuestion=questionList[questionIndex];
         DisplayQuestion();

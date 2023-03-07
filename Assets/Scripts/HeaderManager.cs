@@ -11,6 +11,10 @@ public class HeaderManager : MonoBehaviour
     {
         header = GetComponent<TextMeshProUGUI>();
     }
+    public static void hideHeader(){
+        header.text = "";
+    }
+    
     public static void updateInterviewHeader(int roundNumber, int index, int total)
     {
         string roundText = roundNumber == 1 ? "ONE" : "TWO";

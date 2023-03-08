@@ -69,7 +69,7 @@ public class InterviewManager : MonoBehaviour
     void choose(int choice)
     {
         //Display the interviewer's response before moving to the next question
-        portraitDisplay.displaySuitPortrait(currentMCQuesiton.getResponse(choice));
+        portraitDisplay.displayPortrait(PORTRAIT.Suit,currentMCQuesiton.getResponse(choice));
         //Start a couroutine to hold everything
         StartCoroutine(holdDisplay());
 
@@ -125,7 +125,7 @@ public class InterviewManager : MonoBehaviour
         }
         else
         {
-            LoadingManager.instance.LoadScene(1);
+            LoadingManager.instance.WaitingForEmailLoadScene(2);
         }
 
     }
@@ -137,6 +137,5 @@ public class InterviewManager : MonoBehaviour
         portraitDisplay.clearDisplay();
         displayInterviewQuestions();
     }
-
 
 }

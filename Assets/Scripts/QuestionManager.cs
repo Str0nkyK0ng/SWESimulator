@@ -47,7 +47,7 @@ public class QuestionManager : MonoBehaviour
         {
             HeaderManager.hideHeader();
             HideDisplay();
-            LoadingManager.instance.LoadScene(2);
+            LoadingManager.instance.WaitingForEmailLoadScene(3);
         }
     }
     void WrongAnswer(){

@@ -5,16 +5,22 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class LoadingManager : MonoBehaviour
 {
+
+   public EmailDisplay emailDisplay;
    public static LoadingManager instance;
    string loadingVisual ="";
    int loadingAmount = 0;
    int loadingLength = 7;
    public TextMeshProUGUI loadingLabel;
 
-    public void LoadScene(int index){
+    public void WaitingForEmailLoadScene(int index){
         StartCoroutine(WaitingLoadScene(index));
     }
 
+    public void LoadScene(int index){
+        SceneManager.LoadScene(index);
+    }
+    
     void updateLoadingVisual(){
         loadingVisual="WAITING FOR FOLLOW-UP EMAIL\n";
         for(int x=0;x<loadingAmount;x++){
@@ -29,13 +35,13 @@ public class LoadingManager : MonoBehaviour
     }
     IEnumerator WaitingLoadScene(int index)
     {
-
+        //Show the loading email graphic
         while (loadingAmount!=loadingLength)
         {
             updateLoadingVisual();
             yield return new WaitForSeconds(loadingAmount*0.25f);
         }
-        
+
         AsyncOperation asyncLoad  = SceneManager.LoadSceneAsync(index);
         loadingVisual="";
         loadingAmount=0;

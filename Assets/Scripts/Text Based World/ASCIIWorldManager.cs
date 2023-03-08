@@ -60,7 +60,9 @@ public class ASCIIWorldManager{
 
         //These are the final two rooms with the desk & snacks, so we'll make sure they're accessible
         HollowRoom(new Vector2(19,1),new Vector2(23,2));
-        board.set(1,21, new Snacks(this));
+        board.set(1,19, new Snacks(this));
+        board.set(2,19, new Coffee(this));
+
         board.set(3,21,null);
 
         HollowRoom(new Vector2(25,1),new Vector2(29,2));

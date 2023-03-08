@@ -6,6 +6,12 @@ using System.Collections.Generic;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
+
+public enum PORTRAIT{
+    Player,
+    Suit,
+}
+
 public class PortraitDisplay : MonoBehaviour
 {
 
@@ -20,6 +26,7 @@ public class PortraitDisplay : MonoBehaviour
     private int line=100;
     private string displayed="";
     private string portraitCaption = "";
+    private string[] desiredPortrait;
     private string[] suitPortrait = 
         {"................................................................"
         ,"................................................................"
@@ -49,44 +56,87 @@ public class PortraitDisplay : MonoBehaviour
         ,"...................=%%%%%%%%#*%%%%%%%%%%........................"
         ,"...................#%%%%%%%@%%%%%%%%%%%#........................"};
 
+    private string[] playerPortrait =
+    {
+        "............................................................"
+        ,".........................:----:::..........................."
+        ,"......................-+#%%%@@%#*+-........................."
+        ,"....................:+*+===+*##%%%*=........................"
+        ,"....................=*==--=++*####%*-......................."
+        ,"....................*=+++++=+*#%%##%=......................."
+        ,"....................*==+##+=#%#####%=......................."
+        ,"....................-=--+===###*+*##-......................."
+        ,".....................=+#*++*##%%%**........................."
+        ,".....................:+*=---=*##%%-........................."
+        ,"......................:++==***#%##*:........................"
+        ,".....................+%==***#%%###@@%*+=-:.................."
+        ,"...............:-=*%%%@*=-==+***#@@@@@@@@@@%#+=............."
+        ,"............=*%%@@%%@%%%#+==++*#%%@@@@@%%%%%%%@#:..........."
+        ,"..........-#@%%@@@@%%%%%@%%#*=*#%%@@@@@%%%%%%%@@%:.........."
+        ,".........:#%%%%%%@@@%%%%%%%@@#%@@@@@@%%%%%%@%@@@@*.........."
+        ,".........*%%%%%%%%%@@%%%%%%%@@@%%%%%%%%%%%%@@@@@@@:........."
+        ,".........#%%%%%%%%%%%@%%%%%%@%@%%%%%%%@%%%@@@@@@@@*........."
+        ,".........%%%@@%%%%%%%%%%%%%%@%%%%%%%%@@%%@@@@@@@@@@:........"
+        ,"........-%%%%@@@%%%%%%%%%%%%%%%%%%%%@@%@@@@@@@%@@@@+........"
+        ,"........=%%%%@@@@%%%%%%@@%%%%%%%%%%%%@@@@@@@@%%%@@@%........"
+        ,"........*%%%%@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%#=........"
+        ,"........=*##%@@@%%%%%%%%%@@@@@@@@@@@@@@@@@@@*==+**#:........"
+        ,".........===+#@@-%%%%%%%%%%%%%%%%@@@@@@@@@@@*==++*#........."
+        ,"........:==+*%@*.#%%%%%%%%%%%%%%%@@@@@@@@@@@*+===+*=........"
+    };
+
     // Start is called before the first frame update
     void Start()
     {
-
+        desiredPortrait = new string[]{""};
     }
+
 
     // Update is called once per frame
     void Update()
     {
         timer+=Time.deltaTime;
-        if(timer>=timePerLine && line<suitPortrait.Length){
-            displayed+=suitPortrait[line]+'\n';
+        if(timer>=timePerLine && line<desiredPortrait.Length){
+            displayed+=desiredPortrait[line]+'\n';
             timer=0;
             line++;
             TMP_portraitDisplay.text = displayed;
         }
         //Once we're at the final line at the caption to the portrait
-        if (line == suitPortrait.Length)
+        if (line == desiredPortrait.Length)
         {
             TMP_portraitCaption.text = portraitCaption;
             line++;
         }
-
     }
 
-
-
-    public void displaySuitPortrait(string caption)
+    public void displayPortrait(PORTRAIT person, string caption)
     {
         timer=0;
         line=0;
         displayed="";
         portraitCaption = caption;
-
-        //Reset the displays
         TMP_portraitCaption.text = "";
         TMP_portraitDisplay.text = "";
+
+        //Switch to the write display
+        switch(person){
+            case PORTRAIT.Suit:
+                desiredPortrait=suitPortrait;
+                break;
+            case PORTRAIT.Player:
+                desiredPortrait=playerPortrait;
+                break;
+        }
     }
+
+    public void changeCaption(string caption){
+        timer=0;
+        line=desiredPortrait.Length;
+        portraitCaption = caption;
+        TMP_portraitCaption.text = "";
+    }
+
     public void clearDisplay()
     {
         //Reset the displays

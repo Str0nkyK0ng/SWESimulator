@@ -29,6 +29,16 @@ public class OfficeWorker:Entity{
 
 }
 
+public class Coffee:Entity{
+    public Coffee(ASCIIWorldManager w):base(w){
+        displayChar="<#C68181>C</color>";
+    }
+    public override bool interact(){
+        world.setLabel("Mmmm, free coffee");
+        return true;
+    }
+}
+
 public class Snacks:Entity{
     int checkNumber;
     string[] responses = new string[] {
@@ -67,7 +77,7 @@ public class Desk : Entity
         if (checkNumber < 1)
             world.setLabel(responses[checkNumber]);
         else
-            LoadingManager.instance.LoadScene(0);
+            Application.Quit();
         return true;
     }
 }

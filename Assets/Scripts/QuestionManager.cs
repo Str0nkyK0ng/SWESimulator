@@ -78,7 +78,7 @@ public class QuestionManager : MonoBehaviour
         Question fourthQuestion = new Question(q,details,ans);
 
         details = "@@@@@@@@a@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
-        q = "Starting from 0, what is the index of the ‘a’ character in the following text?";
+        q = "How many '@' symbols are before the ‘a’ character in the following text?";
         ans = "8";
         Question fifthQuestion = new Question(q, details, ans);
 

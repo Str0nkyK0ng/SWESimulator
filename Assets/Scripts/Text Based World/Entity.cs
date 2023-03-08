@@ -19,7 +19,17 @@ public class Wall:Entity{
     public override bool interact(){ return false;}
 
 }
-public class Cake:Entity{
+
+public class OfficeWorker:Entity{
+    public OfficeWorker(ASCIIWorldManager w):base(w)
+    {
+        displayChar="<#A981C6>@</color>";
+    }
+    public override bool interact(){ return false;}
+
+}
+
+public class Snacks:Entity{
     int checkNumber;
     string[] responses = new string[] {
         "Wow! I can't believe they have free snacks here, this place rocks!",
@@ -28,8 +38,8 @@ public class Cake:Entity{
         "The bowl is empty."
     };
 
-    public Cake(ASCIIWorldManager w):base(w){
-        displayChar="<#F45D01>C</color>";
+    public Snacks(ASCIIWorldManager w):base(w){
+        displayChar="<#F45D01>S</color>";
         checkNumber=0;
     }
     public override bool interact(){
@@ -57,7 +67,7 @@ public class Desk : Entity
         if (checkNumber < 1)
             world.setLabel(responses[checkNumber]);
         else
-            Debug.Log("Transition to final scene");
+            LoadingManager.instance.LoadScene(0);
         return true;
     }
 }

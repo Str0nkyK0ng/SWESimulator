@@ -57,7 +57,7 @@ public class InterviewManager : MonoBehaviour
         currentMCQuesiton = MCQuestions[questionIndex];
         interviewPanel.SetActive(true);
         TMP_options.text = currentMCQuesiton.getDisplayString();
-        TMP_question.text = currentMCQuesiton.questionStatement;
+        TMP_question.text = '\"'+currentMCQuesiton.questionStatement+'\"';
 
         //Init the header
         HeaderManager.updateInterviewHeader(1, questionIndex, MCQuestions.Length);
@@ -120,7 +120,7 @@ public class InterviewManager : MonoBehaviour
             currentMCQuesiton = MCQuestions[questionIndex];
             interviewPanel.SetActive(true);
             TMP_options.text = currentMCQuesiton.getDisplayString();
-            TMP_question.text = currentMCQuesiton.questionStatement;
+            TMP_question.text = '\"'+currentMCQuesiton.questionStatement+'\"';
             HeaderManager.updateInterviewHeader(1, questionIndex, MCQuestions.Length);
         }
         else

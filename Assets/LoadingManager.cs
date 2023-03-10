@@ -9,6 +9,7 @@ public class LoadingManager : MonoBehaviour
    public EmailDisplay emailDisplay;
    public static LoadingManager instance;
    string loadingVisual ="";
+   bool loadingScreenComplete = false;
    int loadingAmount = 0;
    int loadingLength = 7;
    public TextMeshProUGUI loadingLabel;
@@ -33,24 +34,41 @@ public class LoadingManager : MonoBehaviour
         loadingAmount++;
          
     }
+    void hideLoadingVisual(){
+        loadingLabel.text="";
+    }
+
     IEnumerator WaitingLoadScene(int index)
     {
         //Show the loading email graphic
-        while (loadingAmount!=loadingLength)
-        {
-            updateLoadingVisual();
-            yield return new WaitForSeconds(loadingAmount*0.25f);
+        if(!loadingScreenComplete){
+            while (loadingAmount!=loadingLength+1)
+            {
+                updateLoadingVisual();
+                yield return new WaitForSeconds(loadingAmount*0.25f);
+            }
+            loadingScreenComplete=true;
+            hideLoadingVisual();
         }
 
+        //Show the loading email graphic & wait
+        emailDisplay.display();
+        yield return new WaitForSeconds(emailDisplay.TotalTime());
         AsyncOperation asyncLoad  = SceneManager.LoadSceneAsync(index);
+
+        //Reset the visuals of the loading scene
         loadingVisual="";
         loadingAmount=0;
         loadingLabel.text=loadingVisual;
+        emailDisplay.clearDisplay();
+        loadingScreenComplete=false;
 
         //Wait till we're loading in to update our camera
         while(!asyncLoad.isDone){
             yield return null;
         }
+        
+        //Make sure we connect to the camera in the new scene
         GetComponent<Canvas>().worldCamera=FindObjectOfType<Camera>();
     }
     

@@ -6,7 +6,7 @@ public class EmailDisplay : MonoBehaviour
     public TextMeshProUGUI TMP_LogoDisplay;
     public TextMeshProUGUI TMP_EmailDisplay;
     public float timePerLine = 0.025f;
-    public float holdTime = 8f;
+    public float holdTime = 10f;
     public GameObject[] hiddenObjects;
 
 
@@ -41,35 +41,44 @@ public class EmailDisplay : MonoBehaviour
     private int line=10000000;
     private string displayedLogo="";
     private string desiredEmail = "";
+
+    public bool displayEmail=false;
     
     // Update is called once per frame
     void Update()
     {
-        timer+=Time.deltaTime;
-        if(timer>=timePerLine && line<DATAVERSELOGO.Length){
-            displayedLogo+=DATAVERSELOGO[line]+'\n';
-            timer=0;
-            line++;
-            TMP_LogoDisplay.text = displayedLogo;
+        //Only display when we're ready
+        if(!displayEmail)
             return;
-        }
-        //Once we're at the final line at the caption to the portrait
-        if (timer>= timePerLine && line == DATAVERSELOGO.Length)
-        {
-            TMP_EmailDisplay.text = desiredEmail;
-            line++;
-            timer=0;
-        }
 
-        if(timer >= holdTime && line==DATAVERSELOGO.Length+1){
-            // Set everything else active
-            for(int x=0;x<hiddenObjects.Length;x++){
-                hiddenObjects[x].SetActive(true);
+        timer+=Time.deltaTime;
+        //When it's time to update the logo
+        if(timer>=timePerLine){
+            //When there's more of the actual logo to render
+            if(line<DATAVERSELOGO.Length){
+                displayedLogo+=DATAVERSELOGO[line]+'\n';
+                timer=0;
+                line++;
+                TMP_LogoDisplay.text = displayedLogo;
+                return;
             }
-            line++;
+            //Once we're at the final line at the caption to the portrait
+            if (line == DATAVERSELOGO.Length)
+            {
+                TMP_EmailDisplay.text = desiredEmail;
+                line++;
+                timer=0;
+                return;
+            }
         }
     }
 
+    public float TotalTime(){
+        return holdTime + timePerLine*(DATAVERSELOGO.Length+2);
+    }
+    public void display(){
+        displayEmail=true;
+    }
 
     void Start(){
         timer=0;
@@ -83,8 +92,11 @@ public class EmailDisplay : MonoBehaviour
     public void clearDisplay()
     {
         //Reset the displays
+        displayedLogo="";
         TMP_EmailDisplay.text = "";
         TMP_LogoDisplay.text = "";
+        displayEmail=false;
+        line=0;
     }
 
 }

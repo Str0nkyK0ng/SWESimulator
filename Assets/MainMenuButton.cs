@@ -9,14 +9,18 @@ public class MainMenuButton : MonoBehaviour
     public PortraitDisplay portraitDisplay;
     public CanvasGroup menuElements;
     public void StartGame(){
+        if(menuElements.alpha==0)
+            return;
         menuElements.alpha=0;
         StartCoroutine(holdDisplay());
     }
     public void Portfolio(){
-        Application.OpenURL("https://aidanmstrong.com");
+        if(menuElements.alpha!=0)
+            Application.OpenURL("https://aidanmstrong.com");
     }
     public void Quit(){
-        Application.Quit();
+        if(menuElements.alpha!=0)
+            Application.Quit();
     }
 
     public void AddText(TextMeshProUGUI label){

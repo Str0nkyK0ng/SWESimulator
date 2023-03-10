@@ -50,6 +50,10 @@ public class QuestionManager : MonoBehaviour
             LoadingManager.instance.WaitingForEmailLoadScene(3);
         }
     }
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Equals))
+            CorrectAnswer();
+    }
     void WrongAnswer(){
         Debug.Log("Incorrect!");
     }

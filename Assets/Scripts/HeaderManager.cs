@@ -15,11 +15,30 @@ public class HeaderManager : MonoBehaviour
         header.text = "";
     }
     
+    public static void updateWorkdayHear(int dayNum){
+        string roundText="";
+        switch(dayNum){
+            case 0:
+                roundText="ONE";
+                break;
+            case 1:
+                roundText="TWO";
+                break;
+            case 2:
+                roundText="THREE";
+                break;
+        }
+        string headerString = "<mspace=23>#######################\n#######ROUND "+roundText+"#######\n#######################\n";
+        header.text = headerString;
+
+    }
+
     public static void updateInterviewHeader(int roundNumber, int index, int total)
     {
         string roundText = roundNumber == 1 ? "ONE" : "TWO";
         string headerString = "<mspace=23>#######################\n#######ROUND "+roundText+"#######\n#######################\n";
 
+        
         for (int x = 0; x < total; x++)
         {
             if (x <= index)
@@ -32,6 +51,12 @@ public class HeaderManager : MonoBehaviour
             }
         }
 
+
+        if(roundNumber==3)
+        {
+            headerString = "<mspace=23>#######################\n#######FIRST DAY#######\n#######################\n";
+        }
+        
         headerString += "</mspace>";
         header.text = headerString;
 

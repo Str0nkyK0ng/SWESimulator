@@ -9,6 +9,7 @@ public class QuestionManager : MonoBehaviour
 {
     
     public Question activeQuestion;
+    public GameObject inputArea;
     public Question[] questionList;
     public int questionIndex=0;
     public TextMeshProUGUI questionStatement, questionDetails;
@@ -16,11 +17,14 @@ public class QuestionManager : MonoBehaviour
 
     void DisplayQuestion(){
         questionStatement.text=activeQuestion.questionStatement;
+        inputArea.SetActive(true);
         questionDetails.text=activeQuestion.questionDetails;
     }
     void HideDisplay(){
         questionStatement.text="";
         questionDetails.text="";
+        inputArea.SetActive(false);
+
     }
     public void AttemptAnswer(string ans){
         //Remove any spaces or ,s
@@ -51,7 +55,7 @@ public class QuestionManager : MonoBehaviour
         }
     }
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Equals))
+        if(Input.GetKeyDown(KeyCode.B))
             CorrectAnswer();
     }
     void WrongAnswer(){

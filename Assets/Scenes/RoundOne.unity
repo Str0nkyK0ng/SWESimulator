@@ -322,6 +322,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6496902964907783627, guid: df441cfb67212bc4c83335292120dec4, type: 3}
+      propertyPath: m_text
+      value: 'Hi Candidate,
+
+
+
+        We''d like to hire you. Salary is $100,000
+        annually.
+
+
+
+        Use WASD and E to move around the office and interact
+        with objects.
+
+
+
+        Welcome to the DataVerse,
+
+        Jeremy'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df441cfb67212bc4c83335292120dec4, type: 3}
 --- !u!1 &337834123
@@ -778,7 +798,7 @@ GameObject:
   - component: {fileID: 803655950}
   m_Layer: 5
   m_Name: Input Area
-  m_TagString: Untagged
+  m_TagString: InputArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.41345957}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 180.94868}
+  m_AnchoredPosition: {x: 0, y: 180.94899}
   m_SizeDelta: {x: 747.418, y: 209.76192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388732497
@@ -1967,6 +1987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interviewPanel: {fileID: 337834123}
+  inputPanel: {fileID: 803655949}
   TMP_question: {fileID: 1388732497}
   TMP_options: {fileID: 974779292}
   responseGraphicDisplayTime: 4

@@ -9,6 +9,7 @@ public class InterviewManager : MonoBehaviour
 
     [Header("Interview Panel References")]
     public GameObject interviewPanel;
+    public GameObject inputPanel;
     public TextMeshProUGUI TMP_question;
     public TextMeshProUGUI TMP_options;
 
@@ -109,6 +110,7 @@ public class InterviewManager : MonoBehaviour
     void hideInterviewQuestions()
     {
         interviewPanel.SetActive(false);
+        inputPanel.SetActive(false);
     }
 
     void displayInterviewQuestions()
@@ -119,17 +121,26 @@ public class InterviewManager : MonoBehaviour
         {
             currentMCQuesiton = MCQuestions[questionIndex];
             interviewPanel.SetActive(true);
+            inputPanel.SetActive(true);
+
             TMP_options.text = currentMCQuesiton.getDisplayString();
             TMP_question.text = '\"'+currentMCQuesiton.questionStatement+'\"';
             HeaderManager.updateInterviewHeader(1, questionIndex, MCQuestions.Length);
         }
-        else
+        else if (questionIndex == MCQuestions.Length)
         {
             LoadingManager.instance.WaitingForEmailLoadScene(2);
         }
 
     }
 
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.B)){
+            questionIndex=MCQuestions.Length-1;
+            displayInterviewQuestions();
+        }
+    }
+    
     IEnumerator holdDisplay()
     {
         hideInterviewQuestions();

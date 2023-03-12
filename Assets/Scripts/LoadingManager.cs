@@ -22,6 +22,17 @@ public class LoadingManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
     
+    public void emailTransition(int index){
+        emailDisplay.clearDisplay();
+        StartCoroutine(EmailOnlyLoadScene(index));
+    }
+
+    public float emailGraphicOnly(){
+        emailDisplay.clearDisplay();
+        StartCoroutine(EmailGraphicOnly());
+        return emailDisplay.TotalTime();
+    }
+
     void updateLoadingVisual(){
         loadingVisual="WAITING FOR FOLLOW-UP EMAIL\n";
         for(int x=0;x<loadingAmount;x++){
@@ -36,6 +47,22 @@ public class LoadingManager : MonoBehaviour
     }
     void hideLoadingVisual(){
         loadingLabel.text="";
+    }
+
+
+    IEnumerator EmailOnlyLoadScene(int index){
+        //Show the loading email graphic & wait
+        emailDisplay.display();
+        yield return new WaitForSeconds(emailDisplay.TotalTime());
+        emailDisplay.clearDisplay();
+        AsyncOperation asyncLoad  = SceneManager.LoadSceneAsync(index);
+    }
+
+    IEnumerator EmailGraphicOnly(){
+        //Show the loading email graphic & wait
+        emailDisplay.display();
+        yield return new WaitForSeconds(emailDisplay.TotalTime());
+        emailDisplay.clearDisplay();
     }
 
     IEnumerator WaitingLoadScene(int index)
@@ -76,5 +103,18 @@ public class LoadingManager : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(this);
+    }
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+            SceneManager.LoadScene(0);
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+            SceneManager.LoadScene(1);
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+            SceneManager.LoadScene(2);
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+            SceneManager.LoadScene(3);
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+            SceneManager.LoadScene(4);
     }
 }

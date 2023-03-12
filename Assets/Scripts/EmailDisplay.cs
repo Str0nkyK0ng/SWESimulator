@@ -6,12 +6,23 @@ public class EmailDisplay : MonoBehaviour
     public TextMeshProUGUI TMP_LogoDisplay;
     public TextMeshProUGUI TMP_EmailDisplay;
     public float timePerLine = 0.025f;
-    public float holdTime = 10f;
+    private float holdTime = 9;
     public GameObject[] hiddenObjects;
 
+    public int currentEmail=0;
+    private string[] emails = {
+            //The first email, after you finish round one
+            "Hi Candidate,\n \nWe'd like to move forward with the next round of interviews. A hiring manager will reach out to schedule the next round.\n\nBest,\nJeremy",
+            //Second email, after you finish round two
+            "Hi Candidate,\n \nWe'd like to hire you. Salary is $100,000 annually.\nUse 'WASD' to move around the office and 'E' to interact with objects.\n\nWelcome to the DataVerse,\nJeremy",
+            "Hi Employee,\n \nFor your first task we'd like you to find a group of specific users for us. More instructions to come soon. \n \n - Jeremy",
+            "Hi Employee,\n \nOutstanding work today! Happy to have you on the team. Tomorrow we'll teach you about how to use the '>' character. \n \n - Jeremy",
+            "Hi Employee,\n \nGreat work! Tomorrow is quite the important day. Congress is rolling out some new laws and needs some data from us. \n \n - Jeremy",
+            "Hi Employee,\n \nGood work. That data will help us detain those queer criminals ASAP.\nAs a bonus for your hard work, a $25,000 bonus will be sent to you.\n \n - Jeremy",
+    };
 
 
-    public string[] DATAVERSELOGO = {
+    private string[] DATAVERSELOGO = {
     "<mspace=3>DDDDDDDDDDDDD                  AAA         TTTTTTTTTTTTTTTTTTTTTTT         AAA   VVVVVVVV           VVVVVVVVEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR      SSSSSSSSSSSSSSS EEEEEEEEEEEEEEEEEEEEEE",
     "D::::::::::::DDD              A:::A        T:::::::::::::::::::::T        A:::A  V::::::V           V::::::VE::::::::::::::::::::ER::::::::::::::::R   SS:::::::::::::::SE::::::::::::::::::::E",
     "D:::::::::::::::DD           A:::::A       T:::::::::::::::::::::T       A:::::A V::::::V           V::::::VE::::::::::::::::::::ER::::::RRRRRR:::::R S:::::SSSSSS::::::SE::::::::::::::::::::E",
@@ -77,14 +88,17 @@ public class EmailDisplay : MonoBehaviour
         return holdTime + timePerLine*(DATAVERSELOGO.Length+2);
     }
     public void display(){
+        if(currentEmail<emails.Length)
+            desiredEmail = emails[currentEmail];
         displayEmail=true;
+        currentEmail++;
     }
 
     void Start(){
         timer=0;
         line=0;
         displayedLogo="";
-        desiredEmail = TMP_EmailDisplay.text;
+        desiredEmail = emails[currentEmail];
         TMP_EmailDisplay.text = "";
         TMP_LogoDisplay.text = "";
     }

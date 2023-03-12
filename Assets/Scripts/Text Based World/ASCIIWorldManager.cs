@@ -9,7 +9,12 @@ public class ASCIIWorldManager{
     string label;
     Player player;
     Board board;
+    bool visible = true;
 
+    public void hide(){
+        
+        visible=false;
+    }
     public string getLabel(){
         return label;
     }
@@ -17,7 +22,10 @@ public class ASCIIWorldManager{
         label=s;
     }
     public string display(){
-        return board.getDisplay();
+        if(visible)
+            return board.getDisplay();
+        setLabel("");
+        return "";
     }
     public ASCIIWorldManager(){
 
@@ -78,10 +86,14 @@ public class ASCIIWorldManager{
         HollowRoom(new Vector2(1,1+bottomRowOffset),new Vector2(5,2+bottomRowOffset));
         board.set(1+bottomRowOffset,3, new OfficeWorker(this));
         board.set(2+bottomRowOffset,3, new Desk(this));
+        //have a gap so we can interact with this person
+        board.set(bottomRowOffset,3, null);
 
         HollowRoom(new Vector2(7,1+bottomRowOffset),new Vector2(11,2+bottomRowOffset));
         board.set(1+bottomRowOffset,9, new OfficeWorker(this));
         board.set(2+bottomRowOffset,9, new Desk(this));
+
+
 
         HollowRoom(new Vector2(13,1+bottomRowOffset),new Vector2(17,2+bottomRowOffset));
 

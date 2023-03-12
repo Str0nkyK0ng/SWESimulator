@@ -25,7 +25,10 @@ public class OfficeWorker:Entity{
     {
         displayChar="<#A981C6>@</color>";
     }
-    public override bool interact(){ return false;}
+    public override bool interact(){         
+        world.setLabel("They seem busy right now. Maybe I'll talk to them later.");
+        return true;
+    }
 
 }
 
@@ -74,10 +77,14 @@ public class Desk : Entity
     public override bool interact()
     {
         checkNumber++;
-        if (checkNumber < 1)
+        if (checkNumber < responses.Length)
             world.setLabel(responses[checkNumber]);
-        else
-            Application.Quit();
+        else{
+            //Hide the world
+            world.hide();
+            //Transition to our final scene
+            LoadingManager.instance.emailTransition(4);
+        }
         return true;
     }
 }

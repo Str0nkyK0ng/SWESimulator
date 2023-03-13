@@ -112,5 +112,6 @@ public class LoadingManager : MonoBehaviour
     }
 
     void Update(){
+
     }
 }

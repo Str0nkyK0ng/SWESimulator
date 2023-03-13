@@ -135,10 +135,7 @@ public class InterviewManager : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.B)){
-            questionIndex=MCQuestions.Length-1;
-            displayInterviewQuestions();
-        }
+
     }
     
     IEnumerator holdDisplay()

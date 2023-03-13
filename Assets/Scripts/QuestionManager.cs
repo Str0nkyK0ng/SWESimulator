@@ -55,8 +55,7 @@ public class QuestionManager : MonoBehaviour
         }
     }
     void Update(){
-        if(Input.GetKeyDown(KeyCode.B))
-            CorrectAnswer();
+
     }
     void WrongAnswer(){
         Debug.Log("Incorrect!");

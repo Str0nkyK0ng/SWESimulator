@@ -16,7 +16,8 @@ public class QuestionManager : MonoBehaviour
 
 
     void DisplayQuestion(){
-        questionStatement.text=activeQuestion.questionStatement;
+        questionStatement.text = '\"'+activeQuestion.questionStatement+'\"';
+
         inputArea.SetActive(true);
         questionDetails.text=activeQuestion.questionDetails;
     }
@@ -63,7 +64,7 @@ public class QuestionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string details = "\"name\": \"John Doe\",\n  \"age\": \"33\",\n  \"gender\": \"male\",\n  \"dob\": \"Nov 11th, 2001\",\n  \"citizenship-status\": \"undocumented\",\n  \"relationship-status\": \"single\",\n  \"religious-affiliation\": \"Christian\",\n  \"parents\": “deceased”,\n  \"sexuality\": \"bisexual\",\n  \"Income\": \"$43,214\"";
+        string details = "\"name\": \"Maxwell Knight\",\n  \"age\": \"33\",\n  \"gender\": \"male\",\n  \"dob\": \"April 11th, 1994\",\n  \"citizenship-status\": \"undocumented\",\n  \"relationship-status\": \"single\",\n  \"religious-affiliation\": \"Christian\",\n  \"parents\": “deceased”,\n  \"sexuality\": \"bisexual\",\n  \"Income\": \"$43,214\"";
         string q = "Here's the data we have on one of our users, can you tell us what their relationship status is?";
         string ans = "single";
         Question firstQuestion = new Question(q,details,ans);

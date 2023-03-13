@@ -535,7 +535,7 @@ MonoBehaviour:
   isMultipleGhost: 0
   multipleGhostStrength: 0.01
   isScanline: 1
-  ScanLineSize: 7399
+  ScanLineSize: 6528
   isMonochrome: 0
   isLetterBox: 0
   isLetterBoxEdgeBlur: 0
@@ -1712,7 +1712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.41345957}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 180.94899}
+  m_AnchoredPosition: {x: 0, y: 180.949}
   m_SizeDelta: {x: 747.418, y: 209.76192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388732497

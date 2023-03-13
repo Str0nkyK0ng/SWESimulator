@@ -14,6 +14,12 @@ public class LoadingManager : MonoBehaviour
    int loadingLength = 7;
    public TextMeshProUGUI loadingLabel;
 
+
+
+//    Aight I hate doing this but this will work
+    [HideInInspector]
+    public const int ScanLineSize = 6528;
+
     public void WaitingForEmailLoadScene(int index){
         StartCoroutine(WaitingLoadScene(index));
     }
@@ -106,15 +112,5 @@ public class LoadingManager : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-            SceneManager.LoadScene(0);
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-            SceneManager.LoadScene(1);
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-            SceneManager.LoadScene(2);
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-            SceneManager.LoadScene(3);
-        if(Input.GetKeyDown(KeyCode.Alpha4))
-            SceneManager.LoadScene(4);
     }
 }

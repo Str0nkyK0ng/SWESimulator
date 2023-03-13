@@ -15,7 +15,7 @@ public class HeaderManager : MonoBehaviour
         header.text = "";
     }
     
-    public static void updateWorkdayHear(int dayNum){
+    public static void updateWorkdayHeader(int dayNum){
         string roundText="";
         switch(dayNum){
             case 0:
@@ -28,7 +28,7 @@ public class HeaderManager : MonoBehaviour
                 roundText="THREE";
                 break;
         }
-        string headerString = "<mspace=23>#######################\n#######ROUND "+roundText+"#######\n#######################\n";
+        string headerString = "<mspace=23>#######################\n#######DAY "+roundText+"#######\n#######################\n";
         header.text = headerString;
 
     }

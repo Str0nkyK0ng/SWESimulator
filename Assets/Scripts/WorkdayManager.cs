@@ -44,7 +44,7 @@ public class WorkdayManager : MonoBehaviour
 
 
     void DisplayQuestion(){
-        questionStatement.text=activeQuestion.questionStatement;
+        questionStatement.text="\""+activeQuestion.questionStatement+"\"";
         questionDetails.text=activeQuestion.questionDetails;
         inputArea.SetActive(true);
     }
@@ -114,7 +114,7 @@ public class WorkdayManager : MonoBehaviour
     void Start()
     {
 
-        //Day one questions
+        //DAY ONE
         string q = "We'll start off easy, find us every tall user";
         string details = "Use the \"find\" command with the keyword \"tall\" to find them all.";
         string ans = "findtall";
@@ -130,7 +130,7 @@ public class WorkdayManager : MonoBehaviour
         
         //DAY TWO
         q = "Now, we'll start using the '>' command. Find me the address of every short user.";
-        details = "After finding a user group, add the '>' character and the word 'address' to get a list of their addresses.";
+        details = "After finding a group of users, add the '>' character and the word 'address' to get a list of their addresses.";
         ans = "findshort>address";
         firstQuestion = new Question(q,details,ans);
 
@@ -139,7 +139,7 @@ public class WorkdayManager : MonoBehaviour
         ans = "findtall>address";
 
         q = "Nice work, now can you get the SSNs of our tall users?";
-        details = "After finding a user group, add the '>' character and the phrase 'SSN' to get a list of their SSNs";
+        details = "After finding a group of users, add the '>' character and the phrase 'SSN' to get a list of their SSNs";
         ans = "findtall>ssn";
         secondQuestion = new Question(q,details,ans);
 
@@ -147,8 +147,7 @@ public class WorkdayManager : MonoBehaviour
 
 
         //DAY THREE
-
-        q = "Bill 2869 has just been outlawed same-sex relationships. As such, please get us a list of every 'queer' user we have. ";
+        q = "Bill 2869 has just outlawed same-sex relationships. As such, please get us a list of every 'queer' user we have. ";
         details = "Use the \"find\" command with the keyword \"queer\".";
         ans = "findqueer";
         firstQuestion = new Question(q,details,ans);
@@ -174,7 +173,7 @@ public class WorkdayManager : MonoBehaviour
 
         //Display everything and we should be ready to go!
         DisplayQuestion();
-        HeaderManager.updateWorkdayHear(dayNumber);
+        HeaderManager.updateWorkdayHeader(dayNumber);
     }
 
     IEnumerator WaitForEmailToBeDone(float emailLength){
@@ -183,8 +182,7 @@ public class WorkdayManager : MonoBehaviour
 
         //Redisplay all our graphics
         DisplayQuestion();
-        HeaderManager.updateWorkdayHear(dayNumber);
-
+        HeaderManager.updateWorkdayHeader(dayNumber);
     }
 
 }

@@ -342,7 +342,7 @@ MonoBehaviour:
   isMultipleGhost: 0
   multipleGhostStrength: 0.01
   isScanline: 1
-  ScanLineSize: 7399
+  ScanLineSize: 6528
   isMonochrome: 0
   isLetterBox: 0
   isLetterBoxEdgeBlur: 0

@@ -14,10 +14,10 @@ public class EmailDisplay : MonoBehaviour
             //The first email, after you finish round one
             "Hi Candidate,\n \nWe'd like to move forward with the next round of interviews. A hiring manager will reach out to schedule the next round.\n\nBest,\nJeremy",
             //Second email, after you finish round two
-            "Hi Candidate,\n \nWe'd like to hire you. Salary is $100,000 annually.\nUse 'WASD' to move around the office and 'E' to interact with objects.\n\nWelcome to the DataVerse,\nJeremy",
-            "Hi Employee,\n \nFor your first task we'd like you to find a group of specific users for us. More instructions to come soon. \n \n - Jeremy",
-            "Hi Employee,\n \nOutstanding work today! Happy to have you on the team. Tomorrow we'll teach you about how to use the '>' character. \n \n - Jeremy",
-            "Hi Employee,\n \nGreat work! Tomorrow is quite the important day. Congress is rolling out some new laws and needs some data from us. \n \n - Jeremy",
+            "Hi Candidate,\n \nWe'd like to hire you. The salary is $100,000 annually.\nUse 'WASD' to move around the office and 'E' to interact with objects.\n\nWelcome to the DataVerse,\nJeremy",
+            "Hi Employee,\n \nFor your first task we'd like you to find a specific group of users for us. More instructions to come soon. \n \n - Jeremy",
+            "Hi Employee,\n \nOutstanding work today! Happy to have you on the team. Tomorrow we'll teach you how to use the '>' character. \n \n - Jeremy",
+            "Hi Employee,\n \nGreat work! Tomorrow is quite an important day. Congress is rolling out some new laws and needs our help! \n \n - Jeremy",
             "Hi Employee,\n \nGood work. That data will help us detain those queer criminals ASAP.\nAs a bonus for your hard work, a $25,000 bonus will be sent to you.\n \n - Jeremy",
     };
 

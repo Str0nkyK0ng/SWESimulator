@@ -115,12 +115,12 @@ public class WorkdayManager : MonoBehaviour
     {
 
         //DAY ONE
-        string q = "We'll start off easy, find us every tall user";
+        string q = "We'll start off easy, find every tall user.";
         string details = "Use the \"find\" command with the keyword \"tall\" to find them all.";
         string ans = "findtall";
         Question firstQuestion = new Question(q,details,ans);
 
-        q ="Now how about finding every short user.";
+        q ="Now, find every short user.";
         details = "";
         ans = "findshort";
         Question secondQuestion = new Question(q,details,ans);
@@ -129,7 +129,7 @@ public class WorkdayManager : MonoBehaviour
         Workday DayOne = new Workday(new Question[2]{firstQuestion,secondQuestion});
         
         //DAY TWO
-        q = "Now, we'll start using the '>' command. Find me the address of every short user.";
+        q = "Today we'll start using the '>' command. Find me the address of every short user.";
         details = "After finding a group of users, add the '>' character and the word 'address' to get a list of their addresses.";
         ans = "findshort>address";
         firstQuestion = new Question(q,details,ans);
@@ -138,7 +138,7 @@ public class WorkdayManager : MonoBehaviour
         details = "";
         ans = "findtall>address";
 
-        q = "Nice work, now can you get the SSNs of our tall users?";
+        q = "Nice work, now can you get the SSNs for our tall users?";
         details = "After finding a group of users, add the '>' character and the phrase 'SSN' to get a list of their SSNs";
         ans = "findtall>ssn";
         secondQuestion = new Question(q,details,ans);
@@ -152,7 +152,7 @@ public class WorkdayManager : MonoBehaviour
         ans = "findqueer";
         firstQuestion = new Question(q,details,ans);
 
-        q ="We'll need their addresses as well so we can send the police. Please get such a list.";
+        q ="Congress has also asked for a list of their addresses so they can begin to inform the Police. Please get such a list.";
         details = "Use the '>' command to get addresses";
         ans = "findqueer>address";
         secondQuestion = new Question(q,details,ans);

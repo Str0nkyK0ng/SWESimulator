@@ -27,7 +27,7 @@ public class InterviewManager : MonoBehaviour
 
 
         //Opening Question
-        MCQuestionOption optionOne = new MCQuestionOption("I'm really interested in stealing people's private information.","Interesting...");
+        MCQuestionOption optionOne = new MCQuestionOption("I'm really interested in stealing peoples' private information.","Interesting...");
         MCQuestionOption optionTwo = new MCQuestionOption("I think data acquisition is fundamental to the future of technology and I’d love to be a part of it!", "Amazing! Glad to hear it");
         MCQuestionOption optionThree = new MCQuestionOption("My car did! I drive a Toyota Prius!", "That isn't really what I meant, but okay.");
         MCQuestionOption optionFour = new MCQuestionOption("I don't really know, I just saw this job on LinkedIn.", "...");
@@ -38,16 +38,16 @@ public class InterviewManager : MonoBehaviour
         optionOne = new MCQuestionOption("It’s bullshit.", "Pardon your language!");
         optionTwo = new MCQuestionOption("I really resonated with your company vision, which is why I decided to apply.", "Amazing! Glad to hear it");
         optionThree = new MCQuestionOption("Nonconsentual data acquisition is immoral.", "I beg to differ, but we're not here to debate. ");
-        optionFour = new MCQuestionOption("What was the question again?", "I doesn't matter. Moving on.");
+        optionFour = new MCQuestionOption("What was the question again?", "It doesn't matter. Moving on.");
         MCQuestionOption[] questionOptions2 = { optionOne, optionTwo, optionThree, optionFour };
         MultipleChoiceQuestion mcQuestion2 = new MultipleChoiceQuestion("What do you think of our company's vision?", questionOptions2);
 
 
         //Text Questions
-        optionOne = new MCQuestionOption("Life has been a breeze, no challenges here", "Oh, how... humble of you.");
-        optionTwo = new MCQuestionOption("I once held my breath for 2 minutes", "Oh, how ... unique");
-        optionThree = new MCQuestionOption("Waking up for this interview", "Oh, how... honest of you.");
-        optionFour = new MCQuestionOption("During my Undergraduate I spent a lot of hours learning C++", "C++ truly is the paint brush of the modern engineer.");
+        optionOne = new MCQuestionOption("Life has been a breeze, no challenges here!", "Oh, how... humble of you.");
+        optionTwo = new MCQuestionOption("I once held my breath for 2 minutes.", "Oh, how ... unique");
+        optionThree = new MCQuestionOption("Waking up for this interview.", "Oh, how... honest of you.");
+        optionFour = new MCQuestionOption("During my Undergrad, I spent hundreds of hours learning x86_64. It was a difficult experience but I know my skills as an engineer improved because of it.", "Astounding! I'm happy you care so much about programming.");
         MCQuestionOption[] questionOptions3 = { optionOne, optionTwo, optionThree, optionFour };
         MultipleChoiceQuestion mcQuestion3 = new MultipleChoiceQuestion("Tell me about a time you felt challenged.", questionOptions3);
 

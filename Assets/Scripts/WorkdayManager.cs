@@ -120,7 +120,7 @@ public class WorkdayManager : MonoBehaviour
         string ans = "findtall";
         Question firstQuestion = new Question(q,details,ans);
 
-        q ="Now, find every short user.";
+        q ="Now find every short user.";
         details = "";
         ans = "findshort";
         Question secondQuestion = new Question(q,details,ans);

@@ -76,7 +76,7 @@ public class QuestionManager : MonoBehaviour
         Question secondQuestion = new Question(q,details,ans);
 
         details ="3, 7, 13, 6, 11, 10, 14, 2, 12, 9, 1, 8, 5, 15, 4";
-        q = "Now, do it again for these numbers";
+        q = "Now do it again for these numbers";
         ans = "123456789101112131415";
         Question thirdQuestion = new Question(q,details,ans);
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 
+
 public class Screenshot : MonoBehaviour
 {
     public KeyCode screenshotKey;
@@ -12,12 +13,12 @@ public class Screenshot : MonoBehaviour
             Directory.CreateDirectory("./Screenshots/");
 
         //Take the screenshot
-        ScreenCapture.CaptureScreenshot("./Screenshots/" + System.DateTime.Now + ".png", 1);
+        ScreenCapture.CaptureScreenshot("./Screenshots/" + (int)Random.Range(0,1000) + ".png");
 
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.F1)){
+        if(Input.GetKeyDown(screenshotKey)){
             TakeScreenshot();
         }
     }

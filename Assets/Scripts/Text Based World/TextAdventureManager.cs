@@ -15,6 +15,8 @@ public class TextAdventureManager : MonoBehaviour
     {
         worldManager = new ASCIIWorldManager();
 
+        //Figure out what work day it is
+        worldManager.WorkdayAlterations(StateManager.getInstance().getDay());
     }
 
 

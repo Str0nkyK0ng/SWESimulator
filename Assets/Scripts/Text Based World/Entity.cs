@@ -20,13 +20,54 @@ public class Wall:Entity{
 
 }
 
+public class ArcadeCabinet:Entity{
+    public ArcadeCabinet(ASCIIWorldManager w):base(w)
+    {
+        displayChar="<#A74071>A</color>";
+    }
+    public override bool interact(){
+        world.setLabel("An arcade cabinet? At work? THATS AWESOME!");
+        return true;
+    }
+}
+
+public class SleepPod:Entity{
+    public SleepPod(ASCIIWorldManager w):base(w)
+    {
+        displayChar="<#6F91B9>Z</color>";
+    }
+    public override bool interact(){
+        world.setLabel("No one is gonna believe me when I tell them we have sleeping pods at my work.");
+        return true;
+    }
+}
+
+
+public class Server:Entity{    
+    int checkNumber;
+    string[] responses = new string[] {
+        "These servers store the petabytes of data that we've collected on users.",
+        "Every little personal thing about someone can be found on these servers."
+    };
+
+    public Server(ASCIIWorldManager w):base(w){
+        displayChar="<#FFFFFF>S</color>";
+        checkNumber=0;
+    }
+    public override bool interact(){
+        world.setLabel(responses[checkNumber]);
+        checkNumber = Mathf.Min(3,++checkNumber);
+        return true;
+    }
+}
+
 public class OfficeWorker:Entity{
     public OfficeWorker(ASCIIWorldManager w):base(w)
     {
         displayChar="<#A981C6>@</color>";
     }
     public override bool interact(){         
-        world.setLabel("They seem busy right now. Maybe I'll talk to them later.");
+        world.setLabel("<#A981C6>Hey, a few of us are gonna hang out after work if you want to join!</color>");
         return true;
     }
 
@@ -77,7 +118,7 @@ public class Desk : Entity
     public override bool interact()
     {
         checkNumber++;
-        if (checkNumber < responses.Length)
+        if (checkNumber < responses.Length && StateManager.getInstance().getDay()==0)
             world.setLabel(responses[checkNumber]);
         else{
             //Hide the world

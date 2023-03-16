@@ -100,16 +100,39 @@ public class ASCIIWorldManager{
         board.set(1+bottomRowOffset,15, new OfficeWorker(this));
         board.set(2+bottomRowOffset,15, new Desk(this));
 
+
+        //This will be the future server room
         HollowRoom(new Vector2(19,1+bottomRowOffset),new Vector2(23,2+bottomRowOffset));
 
-        board.set(1+bottomRowOffset,21, new OfficeWorker(this));
-        board.set(2+bottomRowOffset,21, new Desk(this));
+        board.set(1+bottomRowOffset,19, new Server(this));
+        board.set(2+bottomRowOffset,19, new Server(this));
+        board.set(1+bottomRowOffset,23, new Server(this));
+        board.set(2+bottomRowOffset,23, new Server(this));
 
         HollowRoom(new Vector2(25,1+bottomRowOffset),new Vector2(29,2+bottomRowOffset));
                 
         board.set(1+bottomRowOffset,27, new OfficeWorker(this));
         board.set(2+bottomRowOffset,27, new Desk(this));
 
+    }
+
+
+    //Ugh I don't like putting this code here, but this is just the way I've made it
+    public void WorkdayAlterations(int dayNumber){
+        switch(dayNumber){
+            case 3:
+                // Open up the server room.
+                board.set(7,21,null);
+                goto case 2;
+            case 2:
+                board.set(2,23,new ArcadeCabinet(this));
+
+                goto case 1;
+            case 1:
+                board.set(1,23,new SleepPod(this));
+                break;
+
+        }
     }
     
     public void HollowRoom(Vector2 topLeft, Vector2 botRight){

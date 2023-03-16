@@ -75,32 +75,29 @@ public class WorkdayManager : MonoBehaviour
             activeQuestion = currentWorkday.getQuestion();
             DisplayQuestion();
             Debug.Log("Correct!");
-
-
         }
         //once the user has done all the questions for the workday, go on to the next day questions,
         else
         {
             NextDay();
-            
         }
+        // 123456789101112131415
     }
     public void NextDay(){
-        dayNumber++;
+
+
+
         HeaderManager.hideHeader();
         HideDisplay();
-        //If we have more workdays show the next email
-        if(dayNumber<workdays.Length){
-            StartCoroutine(WaitForEmailToBeDone(LoadingManager.instance.emailGraphicOnly()));
-            //Also make sure we update all our references
-            currentWorkday = workdays[dayNumber];
-            activeQuestion = currentWorkday.getQuestion();
-        }
-        //Else, show the last email and end the game
-        else{
-            LoadingManager.instance.emailTransition(0);
-        }
 
+        if(StateManager.getInstance().getDay() == workdays.Length-1){
+            LoadingManager.instance.emailTransition(0);
+            return;
+        }
+        
+        //Move us back to the office
+        LoadingManager.instance.emailTransition(3);
+        StateManager.getInstance().NextDay();
     }
     
     void Update(){
@@ -129,16 +126,16 @@ public class WorkdayManager : MonoBehaviour
         Workday DayOne = new Workday(new Question[2]{firstQuestion,secondQuestion});
         
         //DAY TWO
-        q = "Today we'll start using the '>' command. Find me the address of every short user.";
+        q = "Find me the address of every short user.";
         details = "After finding a group of users, add the '>' character and the word 'address' to get a list of their addresses.";
         ans = "findshort>address";
         firstQuestion = new Question(q,details,ans);
 
-        q = "Nice work, now can you do it for every tall user?";
+        q = "Nice work, now can you do find the address of every tall user?";
         details = "";
         ans = "findtall>address";
 
-        q = "Nice work, now can you get the SSNs for our tall users?";
+        q = "Finally, can you get the SSNs for our tall users?";
         details = "After finding a group of users, add the '>' character and the phrase 'SSN' to get a list of their SSNs";
         ans = "findtall>ssn";
         secondQuestion = new Question(q,details,ans);
@@ -146,7 +143,21 @@ public class WorkdayManager : MonoBehaviour
         Workday DayTwo = new Workday(new Question[2]{firstQuestion,secondQuestion});
 
 
-        //DAY THREE
+        //DAY Three
+        q = "The online marketplace FOREST needs a list of every 'single' user we have.";
+        details = "Use the \"find\" command with the keyword \"single\".";
+        ans = "findsingle";
+        firstQuestion = new Question(q,details,ans);
+
+        q ="They'd also like the addresses of these 'single' users.";
+        details = "";
+        ans = "findsingle>address";
+        secondQuestion = new Question(q,details,ans);
+
+        Workday DayThree = new Workday(new Question[2]{firstQuestion,secondQuestion});
+
+
+        //DAY Four
         q = "Bill 2869 has just outlawed same-sex relationships. As such, please get us a list of every 'queer' user we have. ";
         details = "Use the \"find\" command with the keyword \"queer\".";
         ans = "findqueer";
@@ -162,25 +173,19 @@ public class WorkdayManager : MonoBehaviour
         ans = "findqueer>ssn";
         Question thirdQuestion = new Question(q,details,ans);
 
-        Workday DayThree = new Workday(new Question[3]{firstQuestion,secondQuestion,thirdQuestion});
+        Workday DayFour = new Workday(new Question[3]{firstQuestion,secondQuestion,thirdQuestion});
+
+
+
 
 
         //Initing a bunch of things
-        dayNumber=0;
-        workdays = new Workday[3]{DayOne,DayTwo,DayThree};
+        dayNumber=StateManager.getInstance().getDay();
+        workdays = new Workday[4]{DayOne,DayTwo,DayThree,DayFour};
         currentWorkday = workdays[dayNumber];
         activeQuestion = currentWorkday.getQuestion();
 
         //Display everything and we should be ready to go!
-        DisplayQuestion();
-        HeaderManager.updateWorkdayHeader(dayNumber);
-    }
-
-    IEnumerator WaitForEmailToBeDone(float emailLength){
-        //Show the loading email graphic & wait
-        yield return new WaitForSeconds(emailLength);
-
-        //Redisplay all our graphics
         DisplayQuestion();
         HeaderManager.updateWorkdayHeader(dayNumber);
     }

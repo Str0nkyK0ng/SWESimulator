@@ -27,6 +27,9 @@ public class HeaderManager : MonoBehaviour
             case 2:
                 roundText="THREE";
                 break;
+            case 3:
+                roundText="FOUR";
+                break;
         }
         string headerString = "<mspace=23>#######################\n#######DAY "+roundText+"#######\n#######################\n";
         header.text = headerString;

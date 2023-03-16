@@ -22,4 +22,7 @@ public class StateManager : MonoBehaviour
     public int getDay(){
         return workdayNumber;
     }
+    public void setDay(int x){
+        workdayNumber=x;
+    }
 }

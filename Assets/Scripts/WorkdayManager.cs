@@ -91,10 +91,13 @@ public class WorkdayManager : MonoBehaviour
         HideDisplay();
 
         if(StateManager.getInstance().getDay() == workdays.Length-1){
+            //Reset the state manager
+            StateManager.getInstance().setDay(0);
+            LoadingManager.instance.emailDisplay.currentEmail=0;
             LoadingManager.instance.emailTransition(0);
             return;
         }
-        
+
         //Move us back to the office
         LoadingManager.instance.emailTransition(3);
         StateManager.getInstance().NextDay();

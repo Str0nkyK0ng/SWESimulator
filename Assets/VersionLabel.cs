@@ -7,7 +7,7 @@ using TMPro;
 public class VersionLabel : MonoBehaviour
 {
     void Start(){
-        GetComponent<TextMeshProUGUI>().text = "V "+Application.version;
+        GetComponent<TextMeshProUGUI>().text = "v "+Application.version;
     }
 
 }

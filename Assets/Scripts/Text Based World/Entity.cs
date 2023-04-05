@@ -118,9 +118,9 @@ public class Desk : Entity
     public override bool interact()
     {
         checkNumber++;
-        if (checkNumber < responses.Length && StateManager.getInstance().getDay()==0)
+        if (checkNumber < responses.Length)
             world.setLabel(responses[checkNumber]);
-        else{
+        else if (checkNumber == responses.Length){
             //Hide the world
             world.hide();
             //Transition to our final scene
